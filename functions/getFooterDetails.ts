@@ -8,7 +8,7 @@ const sanity = sanityClient({
 })
 
 exports.handler = async ()=>{
-  const query = '*[type==="footer"]';
+  const query = '*[type=="footer"]';
   const footerDetails = await sanity.fetch(query).then((response:any)=>{
     const footerURLDetails = response.social_media_urls.map((footer:any)=>{
       const output = {

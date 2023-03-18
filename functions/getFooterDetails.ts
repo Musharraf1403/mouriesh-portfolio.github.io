@@ -1,7 +1,6 @@
-const sanityClient = require('@sanity/client');
 const imageUrl = require('@sanity/image-url');
 const blocksToHtml = require('@sanity/block-content-to-html');
-
+import sanityClient from "@sanity/client";
 const sanity = sanityClient({
   projectId: process.env['SANITY_PROJECT_ID'],
   dataset: process.env['SANITY_DATASET'],

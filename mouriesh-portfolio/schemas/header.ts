@@ -10,11 +10,26 @@ export default {
     },
     {
       title: 'Banner',
-      name: 'banner',
-      type: 'image',
-      options : {
-        hotspot: true
-      }
+      name: 'header_banner',
+      type: 'object',
+      fields: [
+        {
+          title: 'Mobile Banner',
+          name: 'mobile_banner',
+          type: 'image',
+          options: {
+            hotspot: true
+          }
+        },
+        {
+          title: 'Desktop Banner',
+          name: 'desktop_banner',
+          type: 'image',
+          options: {
+            hotspot: true
+          }
+        }
+      ]
     }
   ]
 }

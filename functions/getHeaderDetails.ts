@@ -13,9 +13,12 @@ exports.handler = async ()=>{
       const output:any = {
         banner_name: header.header_name,
       }
-      const image = header.banner;
-      if(image)
-        output['image'] = imageUrlBuilder(sanity).image(image).url();
+      const mobileImage = header.header_banner.mobile_banner;
+      const desktopImage = header.header_banner.desktop_banner;
+      if(mobileImage)
+        output['mobile_banner'] = imageUrlBuilder(sanity).image(mobileImage).url();
+      if(desktopImage)
+        output['desktop_banner'] = imageUrlBuilder(sanity).image(desktopImage).url();
       return output;
     });
     return headerBannerDetails;

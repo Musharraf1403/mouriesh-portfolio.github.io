@@ -9,7 +9,7 @@ const sanity = sanityClient({
 exports.handler = async () => {
   const query = '*[_type=="portfolio_body"]';
   const bodyDetails = await sanity.fetch(query).then((response: any) => {
-    const allDetails = response[0].portfolio_contents.map((content: any) => {
+    const allDetails = response[0].portfolio_contents?.map((content: any) => {
       const output: any = {
         title: content.title,
       }
@@ -19,7 +19,7 @@ exports.handler = async () => {
         output['mobile_banner'] = imageUrlBuilder(sanity).image(mobileImage).url();
       if (desktopImage)
         output['desktop_banner'] = imageUrlBuilder(sanity).image(desktopImage).url();
-      output['cards'] = content.cards.map((card: any) => {
+      output['cards'] = content.cards?.map((card: any) => {
         const cardDetail: any = {
           card_title: card.card_title,
           card_body: card.card_body

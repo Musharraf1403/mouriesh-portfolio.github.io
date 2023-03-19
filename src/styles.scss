@@ -1,1 +1,35 @@
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'August';
+  src: url('./assets/fonts/August-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'TT Norms Bold';
+  src: url('./assets/fonts/TT\ Norms\ Pro\ Bold.otf');
+}
+
+@font-face {
+  font-family: 'TT Norms Medium';
+  src: url('./assets/fonts/TT\ Norms\ Pro\ Medium.otf');
+}
+
+@font-face {
+  font-family: 'TT Norms Extra Bold';
+  src: url('./assets/fonts/TT\ Norms\ Pro\ ExtraBold.otf');
+}
+
+:root {
+  --yellow: #f2dd1b;
+  --green: #40cd7b;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}

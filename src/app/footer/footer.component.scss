@@ -1,0 +1,23 @@
+.portfolio-footer {
+  background: #000000;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  .name {
+    font-family: "August";
+    font-size: 40px;
+    color: var(--yellow);
+  }
+  .icons {
+    display: flex;
+    gap: 4rem;
+    font-size: x-large;
+    a {
+      color: var(--white);
+      text-decoration: none; 
+    }
+  }
+}

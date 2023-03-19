@@ -21,7 +21,7 @@ exports.handler = async ()=>{
         output['desktop_banner'] = imageUrlBuilder(sanity).image(desktopImage).url();
       return output;
     });
-    return headerBannerDetails;
+    return headerBannerDetails[0];
   })
   return {
     statusCode: 200,

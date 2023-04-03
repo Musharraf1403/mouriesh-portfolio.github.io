@@ -1,5 +1,133 @@
 <div class="mouriesh-portfolio">
-  <app-header id="header"></app-header>
-  <app-body id="body"></app-body>
-  <app-footer id="footer"></app-footer>
+  <div
+    [ngClass]="{ 'display-none': isNavOpen }"
+    class="portfolio-header"
+    [style.background-image]="
+      screenWidth > 425
+        ? 'url(' + headerBannerDetails?.desktop_banner + ')'
+        : 'url(' + headerBannerDetails?.mobile_banner + ')'
+    "
+  >
+    <div class="portfolio-content">
+      <div class="navbar">
+        <div class="name">Mouriesh Filmography</div>
+        <div class="navbar-links">
+          <a class="link" href="#Promo Works">Promo Works</a>
+          <a class="link" href="#Reporting Works">Reporting Works</a>
+          <div class="link" href="#Organizational Works">
+            Organizational Works
+          </div>
+        </div>
+        <div class="button">
+          <button>Let's Discuss</button>
+        </div>
+        <div class="nav-icon" (click)="onClickNavIcon()">
+          <img src="../assets/images/nav_icon.png" alt="" *ngIf="!isNavOpen" />
+          <img
+            src="../assets/images/nav_close_icon.png"
+            alt=""
+            *ngIf="isNavOpen"
+          />
+        </div>
+      </div>
+      <div class="portfolio-quote">
+        <div class="quote">
+          <span class="font-50 keep-calm">Keep Calm and </span>
+          <span class="font-50">Observe People </span>
+          <div class="font-65">Differentiation.</div>
+          <div class="full-name">
+            SK
+            <span class="first-name">
+              MOURIESH <span class="bottom-border"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="isNavOpen ? 'display-none' : 'portfolio-body'">
+    <div
+      class="mouriesh-work"
+      [id]="work.title"
+      *ngFor="let work of bodyDetails"
+      [style.background-image]="
+        screenWidth > 425
+          ? 'url(' + work?.desktop_banner + ')'
+          : 'url(' + work?.mobile_banner + ')'
+      "
+    >
+      <div class="work-content">
+        <div class="title">
+          {{ work.title }}
+        </div>
+        <div class="cards" *ngIf="work?.cards">
+          <div class="card" *ngFor="let card of work.cards">
+            <img
+              [src]="
+                screenWidth > 425
+                  ? card.desktop_card_banner
+                  : card.mobile_card_banner
+              "
+              alt=""
+            />
+            <div class="card-title">
+              {{ card.card_title }}
+            </div>
+            <div class="card-body">
+              {{ card.card_body }}
+            </div>
+          </div>
+        </div>
+        <div class="scroller">
+          <div class="left-arrow">
+            <img src="../assets/images/Arrow 2.png" alt="" />
+          </div>
+          <div class="right-arrow">
+            <img src="../assets/images/Arrow 1.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="isNavOpen ? 'display-none' : 'portfolio-footer'">
+    <div class="name">Mouriesh Vetrimaran</div>
+    <div class="icons">
+      <div class="icon" *ngFor="let icon of socialMediaUrls">
+        <a [href]="icon.url_link" target="_blank">
+          <i [class]="icon.iconClass"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="isNavOpen ? 'side-bar' : 'display-none'">
+    <div class="nav-bar">
+      <div class="name">Mouriesh Filmography</div>
+      <div class="nav-icon" (click)="onClickNavIcon()">
+        <img src="../assets/images/nav_icon.png" alt="" *ngIf="!isNavOpen" />
+        <img
+          src="../assets/images/nav_close_icon.png"
+          alt=""
+          *ngIf="isNavOpen"
+        />
+      </div>
+    </div>
+    <div class="navbar-links">
+      <a class="link" (click)="onClickNavLink()" href="#Promo Works"
+        >Promo Works</a
+      >
+      <a class="link" (click)="onClickNavLink()" href="#Reporting Works"
+        >Reporting Works</a
+      >
+      <div class="link" (click)="onClickNavLink()" href="#Organizational Works">
+        Organizational Works
+      </div>
+    </div>
+    <div class="icons">
+      <div class="icon" *ngFor="let icon of socialMediaUrls">
+        <a [href]="icon.url_link" target="_blank">
+          <i [class]="icon.iconClass"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

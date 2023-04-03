@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PortfolioDetailsService } from './services/portfolio-details.service';
 
 @Component({
@@ -8,17 +8,65 @@ import { PortfolioDetailsService } from './services/portfolio-details.service';
 })
 export class AppComponent {
   title = 'mouriesh_portfolio';
-  constructor(private portfolioService: PortfolioDetailsService){}
-  ngOnInit(){
-    this.portfolioService.getFooterDetails().subscribe(
-      (res:any)=>{
-        console.log(res);
-      }
-    );
-    this.portfolioService.getBodyDetails().subscribe(
-      (res:any)=>{
-        console.log(res);
+  headerBannerDetails: any;
+  socialMediaUrls: any[] = [];
+  bodyDetails: any;
+  screenWidth: any;
+  isNavOpen:boolean = false;
+
+  constructor(private portfolioService: PortfolioDetailsService) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+   this.screenWidth = event.target.innerWidth;
+   if(this.screenWidth > 425)
+    this.isNavOpen = false;
+  }
+
+  ngOnInit() {
+    this.screenWidth = window.innerWidth;
+
+    this.portfolioService.getHeaderDetails().subscribe(
+      (res: any) => {
+        this.headerBannerDetails = res;
       }
     )
+    this.portfolioService.getFooterDetails().subscribe(
+      (res: any) => {
+        this.socialMediaUrls = [...res];
+        for (let i = 0; i < this.socialMediaUrls.length; i++) {
+          switch (this.socialMediaUrls[i].url_name) {
+            case 'Facebook':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-facebook-f';
+              break;
+            case 'Instagram':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-instagram';
+              break;
+            case 'Youtube':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-youtube';
+              break;
+            case 'Twitter':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-twitter';
+              break;
+            case 'LinkedIn':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-linkedin-in';
+              break;
+          }
+        }
+      }
+    )
+    this.portfolioService.getBodyDetails().subscribe(
+      (res: any) => {
+        this.bodyDetails = [...res];
+      }
+    )
+  }
+
+  onClickNavIcon() {
+    this.isNavOpen = !this.isNavOpen;
+  }
+
+  onClickNavLink() {
+    this.isNavOpen = false;
   }
 }

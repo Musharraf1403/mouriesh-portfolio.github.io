@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 import { PortfolioDetailsService } from './services/portfolio-details.service';
 
 @Component({
@@ -12,20 +12,20 @@ export class AppComponent {
   socialMediaUrls: any[] = [];
   bodyDetails: any;
   screenWidth: any;
-  isNavOpen:boolean = false;
+  isNavOpen: boolean = false;
 
   constructor(private portfolioService: PortfolioDetailsService) { }
 
+  @ViewChildren('cards') private cards: QueryList<ViewContainerRef>;
   @HostListener('window:resize', ['$event'])
-  onResize(event:any) {
-   this.screenWidth = event.target.innerWidth;
-   if(this.screenWidth > 425)
-    this.isNavOpen = false;
+  onResize(event: any) {
+    this.screenWidth = event.target.innerWidth;
+    if (this.screenWidth > 425)
+      this.isNavOpen = false;
   }
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
-
     this.portfolioService.getHeaderDetails().subscribe(
       (res: any) => {
         this.headerBannerDetails = res;
@@ -68,5 +68,13 @@ export class AppComponent {
 
   onClickNavLink() {
     this.isNavOpen = false;
+  }
+
+  onScrollLeft(index) {
+    this.cards['_results'][index].nativeElement.scrollTo({ left: (this.cards['_results'][index].nativeElement.scrollLeft - 280), behavior: 'smooth' });
+  }
+
+  onScrollRight(index) {
+    this.cards['_results'][index].nativeElement.scrollTo({ left: (this.cards['_results'][index].nativeElement.scrollLeft + 280), behavior: 'smooth' });
   }
 }

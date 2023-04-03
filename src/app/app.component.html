@@ -49,7 +49,7 @@
     <div
       class="mouriesh-work"
       [id]="work.title"
-      *ngFor="let work of bodyDetails"
+      *ngFor="let work of bodyDetails; let i = index"
       [style.background-image]="
         screenWidth > 425
           ? 'url(' + work?.desktop_banner + ')'
@@ -60,7 +60,7 @@
         <div class="title">
           {{ work.title }}
         </div>
-        <div class="cards" *ngIf="work?.cards">
+        <div class="cards" *ngIf="work?.cards" #cards>
           <div class="card" *ngFor="let card of work.cards">
             <img
               [src]="
@@ -79,10 +79,10 @@
           </div>
         </div>
         <div class="scroller">
-          <div class="left-arrow">
+          <div class="left-arrow" (click)="onScrollLeft(i)">
             <img src="../assets/images/Arrow 2.png" alt="" />
           </div>
-          <div class="right-arrow">
+          <div class="right-arrow" (click)="onScrollRight(i)">
             <img src="../assets/images/Arrow 1.png" alt="" />
           </div>
         </div>

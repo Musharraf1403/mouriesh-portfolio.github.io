@@ -77,6 +77,10 @@ export default {
                           }
                         }
                       ]
+                    }, {
+                      title: 'Card Url',
+                      name: 'card_url',
+                      type: 'url'
                     }
                   ]
                 }

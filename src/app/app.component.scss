@@ -144,8 +144,10 @@
       background-size: cover;
       .work-content {
         padding: 4rem;
+        padding-right: 0;
         @media screen and (max-width: 768px) {
           padding: 2rem;
+          padding-right: 0;
         }
         height: 100%;
         .title {
@@ -156,9 +158,9 @@
         }
         .cards {
           display: flex;
-          overflow: hidden;
-          @media screen and (max-width: 768px) {
-            overflow: auto;
+          overflow: auto;
+          &::-webkit-scrollbar {
+            display: none;
           }
           gap: 2rem;
           .card {
@@ -166,6 +168,7 @@
             width: 280px;
             height: 470px;
             flex-direction: column;
+            cursor: pointer;
             padding: 0.5rem;
             background: var(--white);
             gap: 1rem;
@@ -175,6 +178,15 @@
             }
             .card-body {
               font-size: 1rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: inline-block;
+            }
+            &:last-child {
+              margin-right: 4rem;
+              @media screen and (max-width: 768px) {
+                margin-right: 2rem;
+              }
             }
           }
         }
@@ -186,6 +198,8 @@
           @media screen and (max-width: 768px) {
             display: none;
           }
+          margin-right: 2rem;
+          margin-top: 1rem;
         }
       }
     }
@@ -276,4 +290,53 @@
       }
     }
   }
+
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid;
+  margin: 1rem;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-family: "August";
+  margin: auto;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  z-index: 1;
+  background: white;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .label {
+      margin: auto;
+      font-size: x-large;
+    }
+  }
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .label {
+      font-size: x-large;
+    }
+  }
+  input,
+  textarea {
+    border: 1px solid;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 200px;
+  }
+}
+
+.opacity-event {
+  opacity: 0.8;
+  pointer-events: none;
+  overflow: hidden;
 }

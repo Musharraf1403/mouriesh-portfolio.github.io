@@ -12,14 +12,15 @@
       <div class="navbar">
         <div class="name">Mouriesh Filmography</div>
         <div class="navbar-links">
-          <a class="link" href="#Promo Works">Promo Works</a>
-          <a class="link" href="#Reporting Works">Reporting Works</a>
-          <div class="link" href="#Organizational Works">
-            Organizational Works
-          </div>
+          <a
+            class="link"
+            *ngFor="let work of workTitles; let i = index"
+            [href]="'#' + work"
+            >{{ work }}</a
+          >
         </div>
         <div class="button">
-          <button>Let's Discuss</button>
+          <button (click)="onToggleForm()">Let's Discuss</button>
         </div>
         <div class="nav-icon" (click)="onClickNavIcon()">
           <img src="../assets/images/nav_icon.png" alt="" *ngIf="!isNavOpen" />
@@ -61,7 +62,11 @@
           {{ work.title }}
         </div>
         <div class="cards" *ngIf="work?.cards" #cards>
-          <div class="card" *ngFor="let card of work.cards">
+          <div
+            class="card"
+            *ngFor="let card of work.cards"
+            (click)="onClickCard(card)"
+          >
             <img
               [src]="
                 screenWidth > 425
@@ -112,14 +117,15 @@
       </div>
     </div>
     <div class="navbar-links">
-      <a class="link" (click)="onClickNavLink()" href="#Promo Works"
-        >Promo Works</a
+      <a
+        class="link"
+        *ngFor="let work of workTitles"
+        (click)="onClickNavLink()"
+        [href]="'#' + work"
+        >{{ work }}</a
       >
-      <a class="link" (click)="onClickNavLink()" href="#Reporting Works"
-        >Reporting Works</a
-      >
-      <div class="link" (click)="onClickNavLink()" href="#Organizational Works">
-        Organizational Works
+      <div class="link" (click)="onToggleForm()">
+        Contact Us
       </div>
     </div>
     <div class="icons">
@@ -131,3 +137,27 @@
     </div>
   </div>
 </div>
+<!-- <div class="form" *ngIf="isFormOpen">
+  <div class="header">
+    <div class="label">Contact Us</div>
+    <div class="btn" (click)="onToggleForm()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+  <div class="input-field">
+    <div class="label">Name:</div>
+    <input type="text" placeholder="Enter Name:" />
+  </div>
+  <div class="input-field">
+    <div class="label">Email:</div>
+    <input type="email" placeholder="Enter Email" />
+  </div>
+  <div class="input-field">
+    <div class="label">Phone No:</div>
+    <input type="number" placeholder="Enter Mobile" />
+  </div>
+  <div class="input-field">
+    <div class="label">Comment:</div>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+  </div>
+</div> -->

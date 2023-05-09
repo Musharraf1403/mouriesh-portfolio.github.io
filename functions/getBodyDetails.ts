@@ -22,7 +22,8 @@ exports.handler = async () => {
       output['cards'] = content.cards?.map((card: any) => {
         const cardDetail: any = {
           card_title: card.card_title,
-          card_body: card.card_body
+          card_body: card.card_body,
+          card_url: card.card_url
         };
         const mobileCardImage = card.card_banner?.mobile_banner;
         const desktopCardImage = card.card_banner?.desktop_banner;

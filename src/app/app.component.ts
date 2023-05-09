@@ -13,6 +13,8 @@ export class AppComponent {
   bodyDetails: any;
   screenWidth: any;
   isNavOpen: boolean = false;
+  isFormOpen: boolean = false;
+  workTitles:any[] = [];
 
   constructor(private portfolioService: PortfolioDetailsService) { }
 
@@ -58,6 +60,15 @@ export class AppComponent {
     this.portfolioService.getBodyDetails().subscribe(
       (res: any) => {
         this.bodyDetails = [...res];
+        if(this.bodyDetails.length > 3) {
+          for(let i=0;i<3;i++) {
+            this.workTitles.push(this.bodyDetails[i].title);
+          }
+        } else {
+          for(let i=0;i<this.bodyDetails.length;i++) {
+            this.workTitles.push(this.bodyDetails[i].title);
+          }
+        }
       }
     )
   }
@@ -76,5 +87,15 @@ export class AppComponent {
 
   onScrollRight(index) {
     this.cards['_results'][index].nativeElement.scrollTo({ left: (this.cards['_results'][index].nativeElement.scrollLeft + 280), behavior: 'smooth' });
+  }
+
+  onToggleForm(){
+    console.log(this.isFormOpen)
+    this.isFormOpen = !this.isFormOpen;
+  }
+
+  onClickCard(card) {
+    console.log(card);
+    window.open(card.card_url)
   }
 }

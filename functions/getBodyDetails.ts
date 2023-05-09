@@ -13,8 +13,8 @@ exports.handler = async () => {
       const output: any = {
         title: content.title,
       }
-      const mobileImage = content.banner_image.mobile_banner;
-      const desktopImage = content.banner_image.desktop_banner;
+      const mobileImage = content.banner_image?.mobile_banner;
+      const desktopImage = content.banner_image?.desktop_banner;
       if (mobileImage)
         output['mobile_banner'] = imageUrlBuilder(sanity).image(mobileImage).url();
       if (desktopImage)
@@ -24,8 +24,8 @@ exports.handler = async () => {
           card_title: card.card_title,
           card_body: card.card_body
         };
-        const mobileCardImage = card.card_banner.mobile_banner;
-        const desktopCardImage = card.card_banner.desktop_banner;
+        const mobileCardImage = card.card_banner?.mobile_banner;
+        const desktopCardImage = card.card_banner?.desktop_banner;
         if (mobileCardImage)
           cardDetail['mobile_card_banner'] = imageUrlBuilder(sanity).image(mobileCardImage).url();
         if (desktopCardImage)

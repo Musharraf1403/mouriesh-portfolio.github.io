@@ -49,7 +49,7 @@
   <div [ngClass]="isNavOpen ? 'display-none' : 'portfolio-body'">
     <div
       class="mouriesh-work"
-      [id]="work.title"
+      [id]="work.id"
       *ngFor="let work of bodyDetails; let i = index"
       [style.background-image]="
         screenWidth > 425

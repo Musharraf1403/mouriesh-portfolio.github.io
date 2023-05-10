@@ -62,11 +62,11 @@ export class AppComponent {
         this.bodyDetails = [...res];
         if(this.bodyDetails.length > 3) {
           for(let i=0;i<3;i++) {
-            this.workTitles.push(this.bodyDetails[i].title);
+            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].title.toLowerCase().replace(" ", "")});
           }
         } else {
           for(let i=0;i<this.bodyDetails.length;i++) {
-            this.workTitles.push(this.bodyDetails[i].title);
+            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].title.toLowerCase().replace(" ", "")});
           }
         }
       }

@@ -15,8 +15,8 @@
           <a
             class="link"
             *ngFor="let work of workTitles; let i = index"
-            [href]="'#' + work"
-            >{{ work }}</a
+            [href]="'#' + work.id"
+            >{{ work.title }}</a
           >
         </div>
         <div class="button">
@@ -83,14 +83,6 @@
             </div>
           </div>
         </div>
-        <div class="scroller">
-          <div class="left-arrow" (click)="onScrollLeft(i)">
-            <img src="../assets/images/Arrow 2.png" alt="" />
-          </div>
-          <div class="right-arrow" (click)="onScrollRight(i)">
-            <img src="../assets/images/Arrow 1.png" alt="" />
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -121,8 +113,8 @@
         class="link"
         *ngFor="let work of workTitles"
         (click)="onClickNavLink()"
-        [href]="'#' + work"
-        >{{ work }}</a
+        [href]="'#' + work.id"
+        >{{ work.title }}</a
       >
       <div class="link" (click)="onToggleForm()">
         Contact Us

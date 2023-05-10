@@ -60,13 +60,16 @@ export class AppComponent {
     this.portfolioService.getBodyDetails().subscribe(
       (res: any) => {
         this.bodyDetails = [...res];
+        for(let i=0;i<this.bodyDetails.length;i++){
+          this.bodyDetails[i]['id'] = this.bodyDetails[i].title.toLowerCase().replace(" ", '');
+        }
         if(this.bodyDetails.length > 3) {
           for(let i=0;i<3;i++) {
-            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].title.toLowerCase().replace(" ", "")});
+            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].id});
           }
         } else {
           for(let i=0;i<this.bodyDetails.length;i++) {
-            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].title.toLowerCase().replace(" ", "")});
+            this.workTitles.push({title: this.bodyDetails[i].title, id: this.bodyDetails[i].id});
           }
         }
       }

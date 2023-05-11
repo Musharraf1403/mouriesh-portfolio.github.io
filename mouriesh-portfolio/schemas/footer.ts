@@ -22,6 +22,11 @@ export default {
               title: 'URL',
               name: 'url_link',
               type: 'url'
+            },
+            {
+              title: 'To be displayed',
+              name: 'to_be_displayed',
+              type: 'boolean'
             }
           ]
         }

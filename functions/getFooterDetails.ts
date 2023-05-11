@@ -11,7 +11,8 @@ exports.handler = async ()=>{
     const footerURLDetails = response[0].social_media_urls.map((footer:any)=>{
       const output = {
         url_name: footer.url_name,
-        url_link: footer.url_link
+        url_link: footer.url_link,
+        is_active: footer.to_be_displayed
       }
       return output;
     });

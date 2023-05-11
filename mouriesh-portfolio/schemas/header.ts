@@ -4,11 +4,6 @@ export default {
   type: 'document',
   fields: [
     {
-      title: "Header Banner",
-      name: 'header_name',
-      type: 'string'
-    },
-    {
       title: 'Banner',
       name: 'header_banner',
       type: 'object',
@@ -28,6 +23,11 @@ export default {
           options: {
             hotspot: true
           }
+        },
+        {
+          title: 'Contact Us Link',
+          name: 'contact_us_link',
+          type: 'url'
         }
       ]
     }

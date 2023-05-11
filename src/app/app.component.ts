@@ -53,6 +53,12 @@ export class AppComponent {
             case 'LinkedIn':
               this.socialMediaUrls[i]['iconClass'] = 'fa-brands fa-linkedin-in';
               break;
+            case 'Gmail':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-regular fa-envelope';
+              break;
+            case 'Phone':
+              this.socialMediaUrls[i]['iconClass'] = 'fa-solid fa-phone';
+              break;
           }
         }
       }

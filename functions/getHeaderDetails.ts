@@ -10,15 +10,15 @@ exports.handler = async ()=>{
   const query = '*[_type=="header"]';
   const headerDetails = await sanity.fetch(query).then((response:any)=>{
     const headerBannerDetails = response.map((header:any)=>{
-      const output:any = {
-        banner_name: header.header_name,
-      }
+      const output:any = {}
       const mobileImage = header.header_banner.mobile_banner;
+      output['contact_us_url'] = header.header_banner.contact_us_url;
       const desktopImage = header.header_banner.desktop_banner;
       if(mobileImage)
         output['mobile_banner'] = imageUrlBuilder(sanity).image(mobileImage).url();
       if(desktopImage)
         output['desktop_banner'] = imageUrlBuilder(sanity).image(desktopImage).url();
+      
       return output;
     });
     return headerBannerDetails[0];

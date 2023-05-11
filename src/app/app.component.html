@@ -37,10 +37,10 @@
           <span class="font-50">Observe People </span>
           <div class="font-65">Differentiation.</div>
           <div class="full-name">
-            SK
             <span class="first-name">
               MOURIESH <span class="bottom-border"></span>
             </span>
+            SK
           </div>
         </div>
       </div>
@@ -111,14 +111,12 @@
     <div class="navbar-links">
       <a
         class="link"
-        *ngFor="let work of workTitles; let i=index"
+        *ngFor="let work of workTitles; let i = index"
         (click)="onClickNavLink()"
         [href]="'#' + i"
         >{{ work.title }}</a
       >
-      <div class="link" (click)="onToggleForm()">
-        Contact Us
-      </div>
+      <div class="link" (click)="onToggleForm()">Contact Us</div>
     </div>
     <div class="icons">
       <div class="icon" *ngFor="let icon of socialMediaUrls">

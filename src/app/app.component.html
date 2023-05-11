@@ -117,7 +117,8 @@
         [href]="'#' + i"
         >{{ work.title }}</a
       >
-      <div class="link" (click)="onToggleForm()">Contact Us</div>
+      <div class="link" (click)="onClickResume()">View Resume</div>
+      <div class="link" (click)="onClickDiscuss()">Contact Us</div>
     </div>
     <div class="icons">
       <div class="icon" *ngFor="let icon of socialMediaUrls">

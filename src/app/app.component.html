@@ -15,7 +15,7 @@
           <a
             class="link"
             *ngFor="let work of workTitles; let i = index"
-            [href]="'#' + work.id"
+            [href]="'#' + i"
             >{{ work.title }}</a
           >
         </div>
@@ -49,7 +49,7 @@
   <div [ngClass]="isNavOpen ? 'display-none' : 'portfolio-body'">
     <div
       class="mouriesh-work"
-      [id]="work.id"
+      [id]="i"
       *ngFor="let work of bodyDetails; let i = index"
       [style.background-image]="
         screenWidth > 425
@@ -111,9 +111,9 @@
     <div class="navbar-links">
       <a
         class="link"
-        *ngFor="let work of workTitles"
+        *ngFor="let work of workTitles; let i=index"
         (click)="onClickNavLink()"
-        [href]="'#' + work.id"
+        [href]="'#' + i"
         >{{ work.title }}</a
       >
       <div class="link" (click)="onToggleForm()">

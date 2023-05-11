@@ -10,7 +10,7 @@
   >
     <div class="portfolio-content">
       <div class="navbar">
-        <div class="name">Mouriesh Filmography</div>
+        <div class="name">{{navbarText}}</div>
         <div class="navbar-links">
           <a
             class="link"
@@ -20,7 +20,7 @@
           >
         </div>
         <div class="button">
-          <button class="view-resume">View Resume</button>
+          <button class="view-resume" (click)="onClickResume()">View Resume</button>
           <button class="discuss" (click)="onClickDiscuss()">Let's Discuss</button>
         </div>
         <div class="nav-icon" (click)="onClickNavIcon()">
@@ -88,7 +88,7 @@
     </div>
   </div>
   <div [ngClass]="isNavOpen ? 'display-none' : 'portfolio-footer'">
-    <div class="name">Mouriesh Vetrimaran</div>
+    <div class="name">{{footerText}}</div>
     <div class="icons">
       <div class="icon" *ngFor="let icon of socialMediaUrls">
         <a [href]="icon.url_link" target="_blank">
@@ -99,7 +99,7 @@
   </div>
   <div [ngClass]="isNavOpen ? 'side-bar' : 'display-none'">
     <div class="nav-bar">
-      <div class="name">Mouriesh Filmography</div>
+      <div class="name">{{navbarText}}</div>
       <div class="nav-icon" (click)="onClickNavIcon()">
         <img src="../assets/images/nav_icon.png" alt="" *ngIf="!isNavOpen" />
         <img

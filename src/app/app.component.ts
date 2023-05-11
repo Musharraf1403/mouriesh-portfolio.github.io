@@ -42,7 +42,6 @@ export class AppComponent {
           if(res[i].is_active)
             this.socialMediaUrls.push({...res[i]});
         }
-
         for (let i = 0; i < this.socialMediaUrls.length; i++) {
           switch (this.socialMediaUrls[i].url_name) {
             case 'Facebook':
@@ -96,7 +95,11 @@ export class AppComponent {
   }
 
   onClickDiscuss() {
-    window.open(this.headerBannerDetails.contact_us_url);
+    window.open(this.headerBannerDetails.contact_us_link);
+  }
+
+  onClickResume() {
+    window.open(this.headerBannerDetails.resume);
   }
 
   onClickNavIcon() {

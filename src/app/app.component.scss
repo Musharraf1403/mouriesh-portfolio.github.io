@@ -14,6 +14,9 @@
         padding: 2rem;
       }
       height: 80%;
+      @media screen and (max-width: 768px) {
+        height: 110%;
+      }
       .navbar {
         padding: 0.5rem;
         background: var(--yellow);
@@ -292,7 +295,7 @@
       }
     }
     .icons {
-      gap: 3rem;
+      gap: 2.75rem;
       font-size: large;
       display: flex;
       justify-content: center;

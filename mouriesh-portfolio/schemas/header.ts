@@ -28,6 +28,11 @@ export default {
           title: 'Contact Us Link',
           name: 'contact_us_link',
           type: 'url'
+        }, 
+        {
+          title: 'View Resume',
+          name: 'resume',
+          type: 'file'
         }
       ]
     }

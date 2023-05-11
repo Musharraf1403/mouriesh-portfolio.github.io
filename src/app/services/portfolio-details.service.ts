@@ -19,4 +19,8 @@ export class PortfolioDetailsService {
   getBodyDetails() {
     return this.http.get('.netlify/functions/getBodyDetails');
   }
+
+  getTextDetails() {
+    return this.http.get('.netlify/functions/getTextDetails');
+  }
 }

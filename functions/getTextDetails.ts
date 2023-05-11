@@ -7,7 +7,7 @@ const sanity = sanityClient({
 })
 
 exports.handler = async () => {
-  const query = '*[_type=="text"]';
+  const query = '*[_type=="texts"]';
   const textDetails = await sanity.fetch(query).then((response: any) => {
     const portfolioTextDetails = response.map((text: any) => {
       const output: any = {}

@@ -15,6 +15,8 @@ export class AppComponent {
   isNavOpen: boolean = false;
   isFormOpen: boolean = false;
   workTitles:any[] = [];
+  navbarText:string;
+  footerText:string;
 
   constructor(private portfolioService: PortfolioDetailsService) { }
 
@@ -35,7 +37,12 @@ export class AppComponent {
     )
     this.portfolioService.getFooterDetails().subscribe(
       (res: any) => {
-        this.socialMediaUrls = [...res];
+        this.socialMediaUrls = [];
+        for(let i=0;i<res.length;i++) {
+          if(res[i].is_active)
+            this.socialMediaUrls.push({...res[i]});
+        }
+
         for (let i = 0; i < this.socialMediaUrls.length; i++) {
           switch (this.socialMediaUrls[i].url_name) {
             case 'Facebook':
@@ -80,6 +87,16 @@ export class AppComponent {
         }
       }
     )
+    this.portfolioService.getTextDetails().subscribe(
+      (res:any)=> {
+        this.navbarText = res?.navbar_text;
+        this.footerText = res?.footer_text;
+      }
+    )
+  }
+
+  onClickDiscuss() {
+    window.open(this.headerBannerDetails.contact_us_url);
   }
 
   onClickNavIcon() {
@@ -99,12 +116,10 @@ export class AppComponent {
   }
 
   onToggleForm(){
-    console.log(this.isFormOpen)
     this.isFormOpen = !this.isFormOpen;
   }
 
   onClickCard(card) {
-    console.log(card);
     window.open(card.card_url)
   }
 }

@@ -37,10 +37,22 @@
           }
         }
         .button {
+          display: flex;
+          gap: 1rem;
           @media screen and (max-width: 425px) {
             display: none;
           }
-          button {
+          .view-resume {
+            font-size: 1.5rem;
+            color: var(--black);
+            font-family: "TT Norms Bold";
+            background: transparent;
+            padding: 0.5rem 1rem;
+            border: 4px solid;
+            outline: 0;
+            cursor: pointer;          
+          }
+          .discuss {
             font-size: 1.5rem;
             color: var(--white);
             font-family: "TT Norms Bold";
@@ -175,6 +187,7 @@
             font-family: "TT Norms Medium";
             .card-title {
               font-size: 1.25rem;
+              font-weight: bold;
             }
             .card-body {
               font-size: 1rem;

@@ -21,7 +21,7 @@ export default {
             {
               title: 'URL',
               name: 'url_link',
-              type: 'url'
+              type: 'string'
             },
             {
               title: 'To be displayed',
